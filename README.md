@@ -8,7 +8,42 @@ This repository is named LifeScript. The working product name is Script.
 
 Complete one task, grow your character, and continue a saved story.
 
-See [the milestone specification](docs/first-milestone.md) for scope, architecture, data records, API contracts, and acceptance criteria. Implementation has not started yet.
+World and protagonist creation is implemented, including optional portraits, saved worlds, and a character sheet with five starting attributes. Tasks and generated scenes are the next milestones.
+
+See [the milestone specification](docs/first-milestone.md) for the broader plan and [development notes](docs/development.md) for the current API and storage details.
+
+## Run locally
+
+Requirements: Java 17 or later, Maven 3.6.3 or later, and Node.js 20.17 or later (Node 22 LTS recommended). Set `JAVA_HOME` to your JDK if Maven cannot find it.
+
+Open two terminals from this repository:
+
+```powershell
+cd backend
+mvn spring-boot:run
+```
+
+```powershell
+cd frontend
+npm ci
+npm run dev
+```
+
+Open the URL printed by Vite, normally `http://127.0.0.1:5173`. Its development proxy forwards `/api` to the backend at `127.0.0.1:8080`.
+
+By default, data is saved on disk under `backend/.local/data` and survives browser refreshes and server restarts. This is a local development account, without login. Both servers bind to loopback. AWS mode is optional; it needs existing resources and credentials as described in the development notes.
+
+## Verify
+
+```powershell
+cd backend
+mvn test
+```
+
+```powershell
+cd frontend
+npm run build
+```
 
 ## Planned structure
 
@@ -16,4 +51,4 @@ See [the milestone specification](docs/first-milestone.md) for scope, architectu
 - `backend/`: Java and Spring Boot REST API.
 - `docs/`: product and architecture decisions.
 
-The initial backend will be a single application with separate task, progression, world, character, and story modules. DynamoDB stores structured state; S3 stores chapter content and media. A fixed story provider comes first, with AI generation added behind the same interface.
+The backend is a single application with a world module and replaceable storage adapters. Later modules will handle tasks, progression, characters, and stories. In AWS mode, DynamoDB stores structured state and S3 stores portraits. A fixed story provider comes before AI generation.
