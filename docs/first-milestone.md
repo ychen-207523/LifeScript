@@ -2,6 +2,8 @@
 
 Status: proposed implementation baseline.
 
+Implementation update: world/protagonist creation, optional PNG/JPEG portraits, local persistence, and a saved-world dashboard are implemented. Multiple worlds can be created and selected. AWS storage adapters are available but have not been verified against cloud resources. See [development notes](development.md) for current behavior; the remaining sections describe the broader milestone.
+
 ## Product goal
 
 A user creates a world and protagonist, completes a categorized task, gains a character attribute, reads a scene, and makes a choice. Refreshing the app preserves all progress.
@@ -60,7 +62,7 @@ The following are logical records. DynamoDB physical keys and indexes should be 
 | World | ID, owner ID, title, setting, tone, rules, protagonist ID, schema version |
 | Character | ID, world ID, owner ID, name, background, appearance, personality, attributes, goals, relationships, persistence mode, portrait asset ID, version |
 | Portrait asset | ID, owner ID, world ID, character ID, S3 object key, validated media type, dimensions, upload status, timestamp |
-| Task | ID, owner ID, world ID, title, category, effort, status, completion timestamp |
+| Task | ID, owner ID, title, category, effort, status, completion timestamp |
 | Completion | ID, task ID, world ID, character ID, awarded attribute and XP, progression rule version, timestamp |
 | Story state | World ID, current scene ID, location, timeline, established facts, unresolved threads, revision |
 | Scene | ID, world ID, sequence, content reference, choices, generation status, provider version, source completion IDs |
@@ -72,7 +74,7 @@ Store structured records and short summaries in DynamoDB. Store full scene/chapt
 Required access patterns:
 
 - Load a user's active world and its protagonist.
-- List a user's tasks in a world by status.
+- List a user's tasks by status. Tasks belong to the account; each completion records the world receiving its reward.
 - Read a world's current state and characters.
 - Read recent scenes and page through older scenes in sequence.
 - Load chapter summaries and unresolved threads for a world.
