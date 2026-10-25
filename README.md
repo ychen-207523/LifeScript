@@ -12,9 +12,17 @@ World and protagonist creation is implemented, including optional portraits, cus
 
 Use the language selector in the header to open the English or Chinese world collection. New worlds use that collection's language for future chapters. Novel generation is not implemented yet. Character details and world settings expand on demand from the simplified dashboard.
 
+The start page introduces Script without opening a world or showing a character. Choose **Create your world** to start with blank setup fields, or expand **Already started a story? Open your saved worlds** to enter an existing world. The Script logo returns to the introduction. Saved worlds remain available after refresh; they are never opened automatically.
+
+During setup, write your own story atmosphere (up to 100 characters). The suggested atmospheres are optional starting points and can be edited freely.
+
+Open **Develop this world** to edit the protagonist's wish, starting situation, and opening scene. **World records** contains empty Places and Characters tables, ready for discoveries during the journey. Add records, link characters to places, upload character portraits, or create custom tables. Columns support text, numbers, checkboxes, choices, and links to places or characters. You can rename columns and lock existing values through **Customize table**.
+
+Each world's records are independent. Built-in table and column labels follow the interface language; custom labels and story content remain exactly as written. Stable internal IDs preserve links when labels change. The **Use in story context** setting records your preference for future AI integration; it does not generate or update a story yet.
+
 Upload a cover during setup or open **World settings → Change cover** on the dashboard. To change the shared fallback for the whole app, replace [default-cover.png](frontend/public/images/default-cover.png).
 
-See [the milestone specification](docs/first-milestone.md) for the broader plan and [development notes](docs/development.md) for the current API and storage details.
+See [the milestone specification](docs/first-milestone.md) for the broader plan, [world records](docs/world-records.md) for setup and table behavior, and [development notes](docs/development.md) for the current API and storage details.
 
 ## Run locally
 
