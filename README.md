@@ -75,6 +75,15 @@ By default, data is saved on disk under `backend/.local/data` and survives brows
 
 ## Verify
 
+Format the frontend and Java source files from the repository root:
+
+```powershell
+npm run format --prefix frontend
+npm run format:check --prefix frontend
+```
+
+Prettier expands compact JSX, objects, and Java declarations into consistently indented code. The shared editor settings are in `.editorconfig`; formatter settings are in `frontend/.prettierrc.json`. Install the frontend dependencies with `npm ci` before running these commands. Configure your editor to use that Prettier configuration for format-on-save if desired.
+
 ```powershell
 cd backend
 mvn test
