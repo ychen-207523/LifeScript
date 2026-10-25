@@ -1,4 +1,4 @@
-package com.lifescript.api;
+package com.lifescript.controller;
 
 import org.slf4j.LoggerFactory;
 import org.springframework.http.*;

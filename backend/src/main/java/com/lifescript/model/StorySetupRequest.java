@@ -1,4 +1,4 @@
-package com.lifescript.world;
+package com.lifescript.model;
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.Size;

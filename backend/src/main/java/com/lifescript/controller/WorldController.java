@@ -1,11 +1,15 @@
-package com.lifescript.world;
+package com.lifescript.controller;
 
-import com.lifescript.account.CurrentAccount;
+import com.lifescript.model.CharacterView;
+import com.lifescript.model.CreateWorldRequest;
+import com.lifescript.model.StorySetupRequest;
+import com.lifescript.model.World;
+import com.lifescript.model.WorldView;
+import com.lifescript.service.CurrentAccount;
+import com.lifescript.service.WorldService;
 import jakarta.validation.Valid;
 import java.net.URI;
-import java.time.Instant;
 import java.util.List;
-import java.util.Map;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -103,28 +107,4 @@ public class WorldController {
             world.setupRevision()
         );
     }
-
-    public record WorldView(
-        String id,
-        String name,
-        String setting,
-        String tone,
-        String rules,
-        CharacterView protagonist,
-        Instant createdAt,
-        String storyLanguage,
-        String coverUrl,
-        String protagonistWish,
-        String startingSituation,
-        String openingScene,
-        long setupRevision
-    ) {}
-
-    public record CharacterView(
-        String id,
-        String name,
-        String background,
-        Map<String, Integer> attributes,
-        String portraitUrl
-    ) {}
 }

@@ -1,4 +1,4 @@
-package com.lifescript.world;
+package com.lifescript.model;
 
 import java.time.Instant;
 import java.util.Map;

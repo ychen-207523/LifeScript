@@ -1,4 +1,4 @@
-package com.lifescript.world;
+package com.lifescript.model;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;

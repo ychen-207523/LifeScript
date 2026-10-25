@@ -1,4 +1,4 @@
-package com.lifescript.world;
+package com.lifescript.service;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

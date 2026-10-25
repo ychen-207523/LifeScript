@@ -1,4 +1,4 @@
-package com.lifescript.knowledge;
+package com.lifescript.model;
 
 import java.util.List;
 

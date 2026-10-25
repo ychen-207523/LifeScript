@@ -1,4 +1,4 @@
-package com.lifescript.api;
+package com.lifescript.controller;
 
 import java.util.Map;
 import org.springframework.web.bind.annotation.GetMapping;

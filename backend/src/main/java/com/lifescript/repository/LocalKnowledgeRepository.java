@@ -1,6 +1,8 @@
-package com.lifescript.knowledge;
+package com.lifescript.repository;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.lifescript.model.WorldRow;
+import com.lifescript.model.WorldTable;
 import java.io.IOException;
 import java.nio.file.*;
 import java.util.*;

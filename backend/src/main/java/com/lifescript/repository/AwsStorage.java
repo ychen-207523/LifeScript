@@ -1,9 +1,9 @@
-package com.lifescript.storage;
+package com.lifescript.repository;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.lifescript.world.World;
-import com.lifescript.world.WorldRepository;
+import com.lifescript.model.StorySetupRequest;
+import com.lifescript.model.World;
 import jakarta.annotation.PreDestroy;
 import java.util.*;
 import org.springframework.beans.factory.annotation.Value;
@@ -82,7 +82,7 @@ public class AwsStorage implements WorldRepository, PortraitStore {
     public World updateSetup(
         String ownerId,
         String worldId,
-        com.lifescript.world.StorySetupRequest request
+        com.lifescript.model.StorySetupRequest request
     ) {
         return update(ownerId, worldId, current -> current.withSetup(request));
     }

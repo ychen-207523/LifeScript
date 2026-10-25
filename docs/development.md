@@ -1,5 +1,20 @@
 # Development notes
 
+## Backend packages
+
+Java sources under `backend/src/main/java/com/lifescript` are grouped by layer:
+
+```text
+com.lifescript
+├── ScriptApplication.java
+├── controller/   REST controllers and shared API error handling
+├── service/      Business logic, current account identity, image validation
+├── model/        Domain records and request/response records
+└── repository/   Persistence interfaces and local/AWS adapters
+```
+
+Controllers call services; services use models and repository interfaces; repository implementations handle storage. Request and response records live in `model`, rather than being nested inside controllers or services. Tests under `backend/src/test/java/com/lifescript` mirror the controller and service packages. This layout does not change REST paths or stored JSON formats.
+
 ## Implemented slice
 
 - Create a world with name, setting, tone, rules, and a protagonist with name/background.

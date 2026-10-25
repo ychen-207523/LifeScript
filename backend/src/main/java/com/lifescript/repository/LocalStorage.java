@@ -1,8 +1,8 @@
-package com.lifescript.storage;
+package com.lifescript.repository;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.lifescript.world.World;
-import com.lifescript.world.WorldRepository;
+import com.lifescript.model.StorySetupRequest;
+import com.lifescript.model.World;
 import java.io.IOException;
 import java.nio.file.*;
 import java.util.Comparator;
@@ -38,7 +38,7 @@ public class LocalStorage implements WorldRepository, PortraitStore {
     public synchronized World updateSetup(
         String ownerId,
         String worldId,
-        com.lifescript.world.StorySetupRequest request
+        com.lifescript.model.StorySetupRequest request
     ) {
         return update(ownerId, worldId, current -> current.withSetup(request));
     }

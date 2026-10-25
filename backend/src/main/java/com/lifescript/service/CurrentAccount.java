@@ -1,4 +1,4 @@
-package com.lifescript.account;
+package com.lifescript.service;
 
 import org.springframework.stereotype.Component;
 

@@ -1,7 +1,12 @@
-package com.lifescript.knowledge;
+package com.lifescript.controller;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.lifescript.account.CurrentAccount;
+import com.lifescript.model.RowRequest;
+import com.lifescript.model.RowView;
+import com.lifescript.model.TableRequest;
+import com.lifescript.model.WorldRow;
+import com.lifescript.model.WorldTable;
+import com.lifescript.service.CurrentAccount;
+import com.lifescript.service.KnowledgeService;
 import java.util.*;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
@@ -26,10 +31,7 @@ public class KnowledgeController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public WorldTable createTable(
-        @PathVariable String worldId,
-        @RequestBody KnowledgeService.TableRequest request
-    ) {
+    public WorldTable createTable(@PathVariable String worldId, @RequestBody TableRequest request) {
         return service.createTable(account.id(), worldId, request);
     }
 
@@ -37,7 +39,7 @@ public class KnowledgeController {
     public WorldTable updateTable(
         @PathVariable String worldId,
         @PathVariable String tableId,
-        @RequestBody KnowledgeService.TableRequest request
+        @RequestBody TableRequest request
     ) {
         return service.updateTable(account.id(), worldId, tableId, request);
     }
@@ -52,7 +54,7 @@ public class KnowledgeController {
         @PathVariable String worldId,
         @PathVariable String tableId,
         @PathVariable String rowId,
-        @RequestBody KnowledgeService.RowRequest request
+        @RequestBody RowRequest request
     ) {
         return view(service.saveRow(account.id(), worldId, tableId, rowId, request));
     }
@@ -99,13 +101,4 @@ public class KnowledgeController {
             row.revision()
         );
     }
-
-    public record RowView(
-        String id,
-        String worldId,
-        String tableId,
-        Map<String, JsonNode> cells,
-        String portraitUrl,
-        long revision
-    ) {}
 }

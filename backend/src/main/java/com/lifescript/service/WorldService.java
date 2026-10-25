@@ -1,6 +1,10 @@
-package com.lifescript.world;
+package com.lifescript.service;
 
-import com.lifescript.storage.PortraitStore;
+import com.lifescript.model.CreateWorldRequest;
+import com.lifescript.model.StorySetupRequest;
+import com.lifescript.model.World;
+import com.lifescript.repository.PortraitStore;
+import com.lifescript.repository.WorldRepository;
 import java.time.Instant;
 import java.util.List;
 import java.util.Map;

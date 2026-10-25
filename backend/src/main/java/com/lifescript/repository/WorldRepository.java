@@ -1,5 +1,7 @@
-package com.lifescript.world;
+package com.lifescript.repository;
 
+import com.lifescript.model.StorySetupRequest;
+import com.lifescript.model.World;
 import java.util.List;
 import java.util.Optional;
 

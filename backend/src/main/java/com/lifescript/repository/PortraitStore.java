@@ -1,4 +1,4 @@
-package com.lifescript.storage;
+package com.lifescript.repository;
 
 public interface PortraitStore {
     void put(String key, byte[] png);

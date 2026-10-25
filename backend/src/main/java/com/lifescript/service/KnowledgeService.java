@@ -1,10 +1,13 @@
-package com.lifescript.knowledge;
+package com.lifescript.service;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.lifescript.storage.PortraitStore;
-import com.lifescript.world.PortraitValidator;
-import com.lifescript.world.WorldService;
+import com.lifescript.model.RowRequest;
+import com.lifescript.model.TableRequest;
+import com.lifescript.model.WorldRow;
+import com.lifescript.model.WorldTable;
+import com.lifescript.repository.KnowledgeRepository;
+import com.lifescript.repository.PortraitStore;
 import java.util.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -33,15 +36,6 @@ public class KnowledgeService {
         this.portraits = portraits;
         this.images = images;
     }
-
-    public record TableRequest(
-        String name,
-        List<WorldTable.Column> columns,
-        boolean useInStory,
-        long revision
-    ) {}
-
-    public record RowRequest(Map<String, JsonNode> cells, long revision, long tableRevision) {}
 
     private WorldTable.Column column(String id, String type) {
         return new WorldTable.Column(id, "", type, List.of(), false);

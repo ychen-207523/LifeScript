@@ -100,4 +100,4 @@ npm run build
 - `backend/`: Java and Spring Boot REST API.
 - `docs/`: product and architecture decisions.
 
-The backend is a single application with a world module and replaceable storage adapters. Later modules will handle tasks, progression, characters, and stories. In AWS mode, DynamoDB stores structured state and S3 stores portraits. A fixed story provider comes before AI generation.
+The backend is a single application organized by layer under `com.lifescript`: `controller` for REST endpoints and API error handling, `service` for application behavior and validation, `model` for domain records and request/response types, and `repository` for persistence interfaces and local/AWS adapters. Tests follow the same package layout. In AWS mode, DynamoDB stores structured state and S3 stores portraits. A fixed story provider comes before AI generation.

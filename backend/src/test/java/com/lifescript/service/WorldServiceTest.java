@@ -1,9 +1,12 @@
-package com.lifescript.world;
+package com.lifescript.service;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.Mockito.*;
 
-import com.lifescript.storage.PortraitStore;
+import com.lifescript.model.CreateWorldRequest;
+import com.lifescript.model.World;
+import com.lifescript.repository.PortraitStore;
+import com.lifescript.repository.WorldRepository;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.util.Optional;

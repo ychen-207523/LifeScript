@@ -1,5 +1,7 @@
-package com.lifescript.knowledge;
+package com.lifescript.repository;
 
+import com.lifescript.model.WorldRow;
+import com.lifescript.model.WorldTable;
 import java.util.List;
 import java.util.Optional;
 

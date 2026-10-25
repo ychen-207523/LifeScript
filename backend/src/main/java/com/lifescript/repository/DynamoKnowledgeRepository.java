@@ -1,7 +1,9 @@
-package com.lifescript.knowledge;
+package com.lifescript.repository;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.lifescript.model.WorldRow;
+import com.lifescript.model.WorldTable;
 import jakarta.annotation.PreDestroy;
 import java.util.*;
 import org.springframework.beans.factory.annotation.Value;

@@ -1,4 +1,4 @@
-package com.lifescript.world;
+package com.lifescript.controller;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -6,8 +6,14 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.lifescript.knowledge.*;
-import com.lifescript.storage.LocalStorage;
+import com.lifescript.model.CreateWorldRequest;
+import com.lifescript.model.StorySetupRequest;
+import com.lifescript.model.TableRequest;
+import com.lifescript.model.World;
+import com.lifescript.model.WorldTable;
+import com.lifescript.repository.LocalKnowledgeRepository;
+import com.lifescript.repository.LocalStorage;
+import com.lifescript.service.KnowledgeService;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.nio.file.Path;
@@ -146,11 +152,7 @@ class WorldRecordsFlowTest {
                 )
             )
             .toList();
-        putJson(
-            base(english) + "/characters",
-            new KnowledgeService.TableRequest("", columns, true, 0),
-            200
-        );
+        putJson(base(english) + "/characters", new TableRequest("", columns, true, 0), 200);
         putJson(
             base(english) + "/characters/rows/" + person,
             row(Map.of("name", "Changed"), 1, 1),
@@ -174,7 +176,7 @@ class WorldRecordsFlowTest {
         );
         putJson(
             base(english) + "/characters",
-            new KnowledgeService.TableRequest("", columns.subList(1, columns.size()), true, 1),
+            new TableRequest("", columns.subList(1, columns.size()), true, 1),
             400
         );
     }
@@ -190,7 +192,7 @@ class WorldRecordsFlowTest {
         var table = knowledge.createTable(
             OWNER,
             world,
-            new KnowledgeService.TableRequest("Quests", columns, true, 0)
+            new TableRequest("Quests", columns, true, 0)
         );
         String record = UUID.randomUUID().toString();
         putJson(
@@ -208,11 +210,7 @@ class WorldRecordsFlowTest {
             columns.get(1),
             new WorldTable.Column("state", "State", "choice", List.of("Done"), false)
         );
-        putJson(
-            base(world) + "/" + table.id(),
-            new KnowledgeService.TableRequest("Quests", changed, true, 1),
-            400
-        );
+        putJson(base(world) + "/" + table.id(), new TableRequest("Quests", changed, true, 1), 400);
         String other = create("zh-CN");
         mvc.perform(get(base(other) + "/" + table.id() + "/rows")).andExpect(status().isNotFound());
         String person = UUID.randomUUID().toString();

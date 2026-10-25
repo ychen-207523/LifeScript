@@ -1,11 +1,13 @@
-package com.lifescript.world;
+package com.lifescript.controller;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.lifescript.storage.LocalStorage;
+import com.lifescript.model.CreateWorldRequest;
+import com.lifescript.model.World;
+import com.lifescript.repository.LocalStorage;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.nio.file.Path;
